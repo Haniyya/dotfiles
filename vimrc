@@ -210,7 +210,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-rails'
-
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 

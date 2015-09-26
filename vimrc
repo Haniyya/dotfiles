@@ -204,3 +204,11 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'Valloric/YouCompleteMe'
+
+
+
+

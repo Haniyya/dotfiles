@@ -37,6 +37,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-endwise'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-fugitive'
+Plugin 'easymotion/vim-easymotion'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 "set mapleader = " "
@@ -197,3 +202,14 @@ let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
 let g:airline_theme = 'dark'
 set t_Co=256
+let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.2.1/bin/ruby'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers=['rubocop']
+let g:airline_powerline_fonts = 1

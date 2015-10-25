@@ -45,7 +45,8 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'ebfe/vim-racer'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jiangmiao/auto-pairs'
-
+Plugin 'mattn/emmet-vim'
+Plugin 'ervandew/eclim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -221,3 +222,4 @@ let g:airline_powerline_fonts = 1
 set hidden
 let g:racer_cmd = "/home/paul/racer/target/release/racer"
 let $RUST_SRC_PATH="/home/paul/rust/src/"
+let g:user_emmet_leader_key='<C-Z>'

@@ -4,7 +4,7 @@ oh-my-zsh/
 vim/vim
 vim/plugin
 vim/bundle
-
+vim/eclim
 vim/.netrwhist
 chef/
 private

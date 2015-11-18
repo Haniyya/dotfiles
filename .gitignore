@@ -2,6 +2,9 @@ vim/bundle/*
 
 oh-my-zsh/
 vim/vim
+vim/plugin
+vim/bundle
+
 vim/.netrwhist
 chef/
 private

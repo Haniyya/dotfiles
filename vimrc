@@ -1,7 +1,4 @@
-
 set nocompatible              " be iMproved, required
-filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -34,7 +31,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-ruby/vim-ruby'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-endwise'
@@ -42,12 +39,15 @@ Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'rust-lang/rust.vim'
-Plugin 'ebfe/vim-racer'
+Plugin 'racer-rust/vim-racer'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'ervandew/eclim'
-
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'danro/rename.vim'
+Plugin 'Shougo/neocomplete'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 call vundle#end()            " required
 filetype plugin indent on    " required
 "set mapleader = " "
@@ -213,13 +213,36 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1    
+
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers=['rubocop']
+let g:syntastic_ruby_checkers=['mri']
 let g:airline_powerline_fonts = 1
 set hidden
+"Rust settings
 let g:racer_cmd = "/home/paul/racer/target/release/racer"
-let $RUST_SRC_PATH="/home/paul/rust/src/"
+let $RUST_SRC_PATH="/home/paul/rust/src"
 let g:user_emmet_leader_key='<C-Z>'
+let g:clang_user_options='|| exit 0'
+let g:clang_complete_copen=1
+let g:clang_hl_errors=1
+let g:EclimCompletionMethod = 'omnifunc'
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python':1, 'java':1, 'ruby': 1  }
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 0
+let g:rubycomplete_rails = 0  
+let g:rubycomplete_load_gemfile = 1 
+set omnifunc=syntaxcomplete#Complete
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+au BufNewFile,BufRead *.rs set filetype=rust
+let g:neocomplete#enable_at_startup = 1

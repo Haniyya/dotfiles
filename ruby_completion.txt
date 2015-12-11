@@ -1,0 +1,5 @@
+If you use Homebrew to install vim, following is what you can do to fix this issue:
+0. Update Homebrew (optional): brew update
+1. If you already installed vim use Homebrew, remove it: brew remove vim
+2. Use the system Ruby to compile and install vim: rvm system do brew install vim
+3. Make an alias for vim: alias vim='rvm system do /usr/local/bin/vim $@'

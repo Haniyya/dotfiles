@@ -1,4 +1,9 @@
-set nocompatible              " be iMproved, required
+
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific pluginset nocompatible              " be iMproved, required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -47,6 +52,7 @@ Plugin 'ervandew/eclim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/neocomplete'
+Plugin 'noprompt/vim-yardoc'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -130,11 +136,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" Make it obvious where 80 characters is
-"set textwidth=80
-"set colorcolumn=+1
-
-" Numbers
+ "Numbers
 set number
 set numberwidth=5
 
@@ -239,10 +241,5 @@ let g:rubycomplete_classes_in_global = 0
 let g:rubycomplete_rails = 0  
 let g:rubycomplete_load_gemfile = 1 
 set omnifunc=syntaxcomplete#Complete
-set nocompatible      " We're running Vim, not Vi!
-syntax on             " Enable syntax highlighting
-filetype on           " Enable filetype detection
-filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
 au BufNewFile,BufRead *.rs set filetype=rust
 let g:neocomplete#enable_at_startup = 1

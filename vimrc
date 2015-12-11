@@ -1,4 +1,3 @@
-
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
@@ -49,7 +48,6 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
-Plugin 'ervandew/eclim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/neocomplete'
@@ -220,7 +218,6 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1    
 
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -235,11 +232,13 @@ let g:user_emmet_leader_key='<C-Z>'
 let g:clang_user_options='|| exit 0'
 let g:clang_complete_copen=1
 let g:clang_hl_errors=1
-let g:EclimCompletionMethod = 'omnifunc'
+
+" YCM configs
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python':1, 'java':1, 'ruby': 1  }
 let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 0
-let g:rubycomplete_rails = 0  
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
 let g:rubycomplete_load_gemfile = 1 
 set omnifunc=syntaxcomplete#Complete
 au BufNewFile,BufRead *.rs set filetype=rust

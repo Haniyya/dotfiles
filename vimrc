@@ -8,10 +8,12 @@ filetype plugin on    " Enable filetype-specific pluginset nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'burnettk/vim-angular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
@@ -226,7 +228,7 @@ set statusline+=%*
 
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1    
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -245,11 +247,11 @@ let g:clang_hl_errors=1
 
 " YCM configs
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python':1, 'java':1, 'ruby': 1  }
+let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python':1, 'java':1, 'ruby': 1, 'haskell': 1 }
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:rubycomplete_load_gemfile = 1 
+let g:rubycomplete_load_gemfile = 1
 set omnifunc=syntaxcomplete#Complete
 au BufNewFile,BufRead *.rs set filetype=rust
 let g:neocomplete#enable_at_startup = 1

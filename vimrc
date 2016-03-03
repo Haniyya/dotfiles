@@ -2,7 +2,6 @@ set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific pluginset nocompatible
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -27,7 +26,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'heartsentwined/vim-emblem'
 "Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-rvm'
+Plugin 'marijnh/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -36,6 +39,7 @@ Plugin 'Shougo/neocomplete'
 Plugin 'noprompt/vim-yardoc'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 call vundle#end()            " required
+syntax enable
 filetype plugin indent on    " required
 
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -80,6 +84,7 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.coffee set filetype=coffee
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
@@ -168,6 +173,7 @@ nnoremap <C-l> <C-w>l
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_coffee_coffeelint_args = "--csv --file config.json"
 let g:syntastic_eruby_ruby_quiet_messages =
       \ {"regex": "possibly useless use of a variable in void context"}
 
@@ -235,7 +241,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers=['mri']
+let g:syntastic_coffee_checkers=['coffeelint']
 set hidden
+
+"Set Bash as shell
+set shell=/bin/bash
 
 "Rust settings
 let g:racer_cmd = "/home/paul/racer/target/release/racer"
@@ -247,7 +257,7 @@ let g:clang_hl_errors=1
 
 " YCM configs
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_filetype_whitelist = { 'cpp': 1, 'c': 1, 'python':1, 'java':1, 'ruby': 1, 'haskell': 1 }
+let g:ycm_filetype_whitelist = {'js': 1, 'javascript': 1, 'cpp': 1, 'c': 1, 'python':1, 'java':1, 'ruby': 1, 'haskell': 1 }
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1

@@ -30,10 +30,14 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'heartsentwined/vim-emblem'
 "Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-rvm'
+Plugin 'tpope/vim-haml'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'shime/vim-livedown'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'noprompt/vim-yardoc'
@@ -264,4 +268,19 @@ let g:rubycomplete_rails = 1
 let g:rubycomplete_load_gemfile = 1
 set omnifunc=syntaxcomplete#Complete
 au BufNewFile,BufRead *.rs set filetype=rust
-let g:neocomplete#enable_at_startup = 1
+
+" Markdown config
+let g:vim_markdown_folding_disabled = 1
+
+" Language German by default
+set spelllang=de
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>

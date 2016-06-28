@@ -41,6 +41,7 @@ Plugin 'shime/vim-livedown'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'noprompt/vim-yardoc'
+Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 call vundle#end()            " required
 syntax enable
@@ -244,7 +245,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers=['mri']
+let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_coffee_checkers=['coffeelint']
 set hidden
 
@@ -287,3 +288,10 @@ nnoremap <C-n> :call NumberToggle()<cr>
 
 set number
 set relativenumber
+
+" Indent Guides stuff
+set ts=2 sw=2 et
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+let g:indent_guides_start_level = 2

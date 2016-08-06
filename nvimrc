@@ -12,7 +12,6 @@ Plugin 'burnettk/vim-angular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
@@ -25,7 +24,6 @@ Plugin 'eagletmt/neco-ghc'
 Plugin 'tpope/vim-fugitive'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'heartsentwined/vim-emblem'
 "Plugin 'tpope/vim-unimpaired'
@@ -42,6 +40,7 @@ Plugin 'danro/rename.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'noprompt/vim-yardoc'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'racer-rust/vim-racer'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 call vundle#end()            " required
 syntax enable
@@ -253,16 +252,13 @@ set hidden
 set shell=/bin/bash
 
 "Rust settings
-let g:racer_cmd = "/home/paul/racer/target/release/racer"
+let g:racer_cmd = "racer"
 let $RUST_SRC_PATH="/home/paul/rust/src"
 let g:user_emmet_leader_key='<C-Z>'
 let g:clang_user_options='|| exit 0'
 let g:clang_complete_copen=1
 let g:clang_hl_errors=1
 
-" YCM configs
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_filetype_whitelist = {'js': 1, 'javascript': 1, 'cpp': 1, 'c': 1, 'python':1, 'java':1, 'ruby': 1, 'haskell': 1 }
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1

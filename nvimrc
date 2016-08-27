@@ -17,7 +17,6 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-endwise'
 Plugin 'ervandew/supertab'
 Plugin 'eagletmt/neco-ghc'
@@ -26,14 +25,12 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'rust-lang/rust.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'heartsentwined/vim-emblem'
-"Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-rvm'
 Plugin 'tpope/vim-haml'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'shime/vim-livedown'
 Plugin 'danro/rename.vim'
@@ -44,7 +41,7 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'Shougo/vimproc.vim'
-"Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'benekastah/neomake'
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -177,13 +174,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_coffee_coffeelint_args = "--csv --file config.json"
-let g:syntastic_eruby_ruby_quiet_messages =
-      \ {"regex": "possibly useless use of a variable in void context"}
-
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
@@ -201,7 +191,6 @@ endif
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set t_Co=256
-let g:syntastic_ruby_exec = '~/.rvm/rubies/ruby-2.2.1/bin/ruby'
 set statusline+=%#warningmsg#
 
 " Airline Config
@@ -242,14 +231,6 @@ set statusline+=%*
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers=['rubocop']
-let g:syntastic_coffee_checkers=['coffeelint']
-set hidden
 
 "Set Bash as shell
 set shell=/bin/sh
@@ -294,6 +275,22 @@ let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
+
+" Neomake Settings
+let g:neomake_ruby_enabled_makers = ['rubocop']
+let g:neomake_rust_enabled_makers = ['rustc']
+let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_haskell_enabled_makers = ['ghc-mod']
+let g:neomake_coffees_enabled_makers = ['coffeelint']
+let g:neomake_warning_sign = {
+  \ 'text': 'W',
+  \ 'texthl': 'WarningMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': 'E',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+autocmd! BufWritePost,BufEnter * Neomake
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)

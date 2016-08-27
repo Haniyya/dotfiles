@@ -208,10 +208,6 @@ set statusline+=%#warningmsg#
 let g:airline_theme = 'dark'
 let g:airline#extensions#tabline#enabled = 1
 
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-
 "Set Bash as shell
 set shell=/bin/sh
 
@@ -222,13 +218,13 @@ let g:user_emmet_leader_key='<C-Z>'
 let g:clang_user_options='|| exit 0'
 let g:clang_complete_copen=1
 let g:clang_hl_errors=1
+au BufNewFile,BufRead *.rs set filetype=rust
 
+" Ruby settings
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:rubycomplete_load_gemfile = 1
-set omnifunc=syntaxcomplete#Complete
-au BufNewFile,BufRead *.rs set filetype=rust
+let g:rubycomplete_use_bundler = 1
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
@@ -257,11 +253,11 @@ hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
 
 " Neomake Settings
-let g:neomake_ruby_enabled_makers = ['rubocop']
+let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
 let g:neomake_rust_enabled_makers = ['rustc']
 let g:neomake_javascript_enabled_makers = ['jshint']
-let g:neomake_haskell_enabled_makers = ['ghc-mod']
-let g:neomake_coffees_enabled_makers = ['coffeelint']
+let g:neomake_haskell_enabled_makers = ['hlint', 'ghcmod']
+let g:neomake_coffeescript_enabled_makers = ['coffeelint']
 let g:neomake_warning_sign = {
   \ 'text': 'W',
   \ 'texthl': 'WarningMsg',

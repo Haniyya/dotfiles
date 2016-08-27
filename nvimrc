@@ -7,41 +7,49 @@ filetype indent on    " Enable filetype-specific indenting
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'burnettk/vim-angular'
+"Plugin 'ervandew/supertab'
+"Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/vimproc.vim'
+
+" Utility and clients
+Plugin 'tpope/vim-endwise'
+Plugin 'benekastah/neomake'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'shougo/deoplete.nvim'
+Plugin 'danro/rename.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'jiangmiao/auto-pairs'
+
+" Code View and organization
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-endwise'
-Plugin 'ervandew/supertab'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'tpope/vim-fugitive'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'rust-lang/rust.vim'
+
+" Code styling
+Plugin 'junegunn/vim-easy-align'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-surround'
+
+" Language Specific Plugins
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'heartsentwined/vim-emblem'
+Plugin 'shime/vim-livedown'
+Plugin 'mattn/emmet-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-rvm'
 Plugin 'tpope/vim-haml'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'shime/vim-livedown'
-Plugin 'danro/rename.vim'
-Plugin 'Shougo/neocomplete'
-Plugin 'noprompt/vim-yardoc'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'racer-rust/vim-racer'
-Plugin 'junegunn/vim-easy-align'
+Plugin 'tpope/vim-rails'
+Plugin 'pangloss/vim-javascript'
+Plugin 'burnettk/vim-angular'
 Plugin 'eagletmt/ghcmod-vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'benekastah/neomake'
+Plugin 'noprompt/vim-yardoc'
+Plugin 'racer-rust/vim-racer'
+
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -291,6 +299,9 @@ let g:neomake_error_sign = {
   \ 'texthl': 'ErrorMsg',
   \ }
 autocmd! BufWritePost,BufEnter * Neomake
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)

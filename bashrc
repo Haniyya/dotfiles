@@ -111,5 +111,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/opt/eclipse" # Add Eclipse and eclimd
+export PATH="$PATH:/home/paul/.cabal/bin" # Add Eclipse and eclimd
 
 alias be='bundle exec'

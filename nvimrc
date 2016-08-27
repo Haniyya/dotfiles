@@ -33,7 +33,7 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'godlygeek/tabular'
+"Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'shime/vim-livedown'
 Plugin 'danro/rename.vim'
@@ -41,6 +41,9 @@ Plugin 'Shougo/neocomplete'
 Plugin 'noprompt/vim-yardoc'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'racer-rust/vim-racer'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'Shougo/vimproc.vim'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 call vundle#end()            " required
 syntax enable
@@ -249,7 +252,7 @@ let g:syntastic_coffee_checkers=['coffeelint']
 set hidden
 
 "Set Bash as shell
-set shell=/bin/bash
+set shell=/bin/sh
 
 "Rust settings
 let g:racer_cmd = "racer"
@@ -291,3 +294,9 @@ let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)

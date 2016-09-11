@@ -50,6 +50,7 @@ Plugin 'burnettk/vim-angular'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'noprompt/vim-yardoc'
 Plugin 'racer-rust/vim-racer'
+Plugin 'lervag/vimtex'
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -253,11 +254,12 @@ hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
 
 " Neomake Settings
-let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
-let g:neomake_rust_enabled_makers = ['rustc']
-let g:neomake_javascript_enabled_makers = ['jshint']
-let g:neomake_haskell_enabled_makers = ['hlint', 'ghcmod']
+let g:neomake_ruby_enabled_makers         = ['mri', 'rubocop']
+let g:neomake_rust_enabled_makers         = ['rustc']
+let g:neomake_javascript_enabled_makers   = ['jshint']
+let g:neomake_haskell_enabled_makers      = ['hlint', 'ghcmod']
 let g:neomake_coffeescript_enabled_makers = ['coffeelint']
+let g:neomake_latex_enabled_makers        = ['lacheck']
 let g:neomake_warning_sign = {
   \ 'text': 'W',
   \ 'texthl': 'WarningMsg',
@@ -272,6 +274,21 @@ autocmd! BufWritePost,BufEnter * Neomake
 let g:deoplete#enable_at_startup = 1
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
+
+" Deoplete vimtex
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = '\\(?:'
+      \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+      \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+      \ . '|hyperref\s*\[[^]]*'
+      \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+      \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+      \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+      \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+      \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+      \ .')'
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)

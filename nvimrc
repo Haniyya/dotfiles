@@ -51,6 +51,7 @@ Plugin 'eagletmt/ghcmod-vim'
 Plugin 'noprompt/vim-yardoc'
 Plugin 'racer-rust/vim-racer'
 Plugin 'lervag/vimtex'
+Plugin 'Elmcast/elm-vim'
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -98,9 +99,11 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.coffee set filetype=coffee
+  autocmd BufRead,BufNewFile *.elm set filetype=elm
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
+  autocmd FileType latex setlocal spell
 
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80

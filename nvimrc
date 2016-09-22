@@ -100,6 +100,8 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.coffee set filetype=coffee
   autocmd BufRead,BufNewFile *.elm set filetype=elm
+  autocmd BufRead,BufNewFile *.rake set filetype=ruby
+  autocmd BufRead,BufNewFile *.thor set filetype=ruby
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell

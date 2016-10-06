@@ -1,0 +1,6 @@
+set -x PATH $PATH /home/paul/.cargo/bin
+set -x RUST_SRC_PATH /home/paul/rust/src
+set -x EDITOR nvim
+set -gx PATH $PATH /home/paul/.cabal/bin
+rvm default
+source ~/.rsvm/rsvm.fish

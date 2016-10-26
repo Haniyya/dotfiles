@@ -30,5 +30,5 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-ln -s ~/.config/nvim/init.vim nvimrc
+ln -s nvimrc ~/.config/nvim/init.vim 
 

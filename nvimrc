@@ -22,12 +22,14 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'majutsushi/tagbar'
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'jceb/vim-orgmode'
 
 " Code styling
 Plugin 'junegunn/vim-easy-align'
@@ -51,7 +53,9 @@ Plugin 'eagletmt/ghcmod-vim'
 Plugin 'noprompt/vim-yardoc'
 Plugin 'racer-rust/vim-racer'
 Plugin 'lervag/vimtex'
-Plugin 'Elmcast/elm-vim'
+Plugin 'elmcast/elm-vim'
+Plugin 'zchee/deoplete-clang'
+Plugin 'c.vim'
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -211,6 +215,7 @@ set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "let g:airline_section_b = '%{strftime("%c")}'
 "let g:airline_section_y = 'BN: %{bufnr("%")}'
+let g:airline_powerline_fonts = 1
 let g:airline_theme = 'dark'
 let g:airline#extensions#tabline#enabled = 1
 
@@ -259,11 +264,13 @@ hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
 
 " Neomake Settings
+let g:neomake_echo_current_error=1
+let g:neomake_verbose=0
 let g:neomake_ruby_enabled_makers         = ['mri', 'rubocop']
-let g:neomake_rust_enabled_makers         = ['rustc']
+let g:neomake_rust_enabled_makers         = []
 let g:neomake_javascript_enabled_makers   = ['jshint']
 let g:neomake_haskell_enabled_makers      = ['hlint', 'ghcmod']
-let g:neomake_coffeescript_enabled_makers = ['coffeelint']
+let g:neomake_coffee_enabled_makers = ['coffeelint']
 let g:neomake_latex_enabled_makers        = ['lacheck']
 let g:neomake_warning_sign = {
   \ 'text': 'W',
@@ -274,11 +281,59 @@ let g:neomake_error_sign = {
   \ 'texthl': 'ErrorMsg',
   \ }
 autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost *.rs NeomakeProject cargo
+
+" define elm-make maker
+let g:neomake_elm_elmmake_maker = {
+  \ 'exe': 'elm-make',
+  \ 'buffer_output': 1,
+  \ 'errorformat':
+    \ '%E%.%#--\ %m\ -%# %f' . ',' .
+    \ '%C%l\\|' . ',' .
+    \ '%C%.%#'
+\ }
+
+" enable elm-make on elm
+let g:neomake_elm_enabled_makers = [ 'elmmake' ]
+
+" use neomake to build different files
+augroup neomake_neomake_build
+  autocmd! BufRead,BufWritePost *.elm Neomake elmmake
+augroup end
+
+" Autoformat elm
+let g:elm_format_autosave = 1
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
+
+" Tagbar
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ]
+\ }
+
+ let g:tagbar_type_rust = {
+    \ 'ctagstype' : 'rust',
+    \ 'kinds' : [
+        \'T:types,type definitions',
+        \'f:functions,function definitions',
+        \'g:enum,enumeration names',
+        \'s:structure names',
+        \'m:modules,module names',
+        \'c:consts,static constants',
+        \'t:traits,traits',
+        \'i:impls,trait implementations',
+    \]
+    \}
 
 " Deoplete vimtex
 if !exists('g:deoplete#omni#input_patterns')

@@ -23,20 +23,31 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'majutsushi/tagbar'
+Plugin 'wting/gitsessions.vim'
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'
+Plugin 'xolox/vim-notes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jceb/vim-orgmode'
+Plugin 'junegunn/goyo.vim'
 
 " Code styling
 Plugin 'junegunn/vim-easy-align'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-surround'
+Plugin 'junegunn/limelight.vim'
 
 " Language Specific Plugins
+Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'xolox/vim-misc'
+Plugin 'leafo/moonscript-vim'
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'rhysd/vim-crystal'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'shime/vim-livedown'
 Plugin 'mattn/emmet-vim'
@@ -55,7 +66,11 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'lervag/vimtex'
 Plugin 'elmcast/elm-vim'
 Plugin 'zchee/deoplete-clang'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'c.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'itchyny/vim-haskell-indent'
+Plugin 'posva/vim-vue'
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -106,6 +121,15 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.elm set filetype=elm
   autocmd BufRead,BufNewFile *.rake set filetype=ruby
   autocmd BufRead,BufNewFile *.thor set filetype=ruby
+  autocmd BufRead,BufNewFile *.cr set filetype=crystal
+  autocmd BufRead,BufNewFile *.exs set filetype=elixir
+  autocmd BufRead,BufNewFile *.ex set filetype=elixir
+  autocmd BufRead,BufNewFile *.vue set filetype=vue
+  autocmd BufRead,BufNewFile *.moon set filetype=moon
+  autocmd BufRead,BufNewFile *.ts set filetype=typescript
+
+  autocmd FileType typescript JsPreTmpl html
+  autocmd FileType typescript syn clear foldBraces
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
@@ -192,6 +216,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+
+map <F2> :GitSessionSave <cr> " Quick write session with F2
+map <F3> :GitSessionLoad <cr>     " And load session with F3
+
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
@@ -235,7 +263,7 @@ au BufNewFile,BufRead *.rs set filetype=rust
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:rubycomplete_use_bundler = 1
+let g:rubycomplete_use_bundler = 0
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
@@ -268,10 +296,11 @@ let g:neomake_echo_current_error=1
 let g:neomake_verbose=0
 let g:neomake_ruby_enabled_makers         = ['mri', 'rubocop']
 let g:neomake_rust_enabled_makers         = []
-let g:neomake_javascript_enabled_makers   = ['jshint']
+let g:neomake_javascript_enabled_makers   = ['eslint']
 let g:neomake_haskell_enabled_makers      = ['hlint', 'ghcmod']
 let g:neomake_coffee_enabled_makers = ['coffeelint']
 let g:neomake_latex_enabled_makers        = ['lacheck']
+let g:neomake_moon_enabled_makers        = []
 let g:neomake_warning_sign = {
   \ 'text': 'W',
   \ 'texthl': 'WarningMsg',
@@ -350,6 +379,17 @@ let g:deoplete#omni#input_patterns.tex = '\\(?:'
       \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
       \ .')'
 
+let g:lua_check_syntax = 0
+let g:lua_complete_omni = 1
+let g:lua_complete_dynamic = 0
+let g:lua_define_completion_mappings = 0
+
+if !exists('g:deoplete#omni#functions')
+  let g:deoplete#omni#functions = {}
+endif
+let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
+"let g:deoplete#omni#functions.lua = 'xolox#lua#completefunc'
+
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
@@ -357,4 +397,4 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " This weeks favorite colorscheme
-colorscheme railscasts
+colorscheme sol

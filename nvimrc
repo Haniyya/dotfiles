@@ -41,7 +41,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'junegunn/limelight.vim'
 
 " Language Specific Plugins
+Plugin 'QMonkey/monkey-vim'
+Plugin 'rawsource/Monkey-VIM'
 Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'sebastianmarkow/deoplete-rust'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'xolox/vim-misc'
@@ -248,7 +251,7 @@ let g:airline_theme = 'dark'
 let g:airline#extensions#tabline#enabled = 1
 
 "Set Bash as shell
-set shell=/bin/sh
+set shell=zsh
 
 "Rust settings
 let g:racer_cmd = "racer"
@@ -263,7 +266,7 @@ au BufNewFile,BufRead *.rs set filetype=rust
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:rubycomplete_use_bundler = 0
+let g:rubycomplete_use_bundler = 1
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
@@ -338,6 +341,10 @@ let g:deoplete#enable_at_startup = 1
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
 
+" Deoplete Rust
+let g:deoplete#sources#rust#racer_binary='/home/paul/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/home/paul/rust/src'
+
 " Tagbar
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
@@ -388,6 +395,7 @@ if !exists('g:deoplete#omni#functions')
   let g:deoplete#omni#functions = {}
 endif
 let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
+let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
 "let g:deoplete#omni#functions.lua = 'xolox#lua#completefunc'
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -396,5 +404,16 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Terminal inputs
+tnoremap <Esc> <C-\><C-n>
+
 " This weeks favorite colorscheme
 colorscheme sol
+
+" Custom Functions
+function Review()
+  echom "Starting review in new tab."
+  tabnew
+  r !git diff develop..HEAD
+  setfiletype git
+endfunction

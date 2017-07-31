@@ -87,3 +87,7 @@ source $ZSH/oh-my-zsh.sh
 export TERM="xterm-256color"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 source $HOME/.cargo/env
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin" # Add gems
+export PATH="$PATH:$HOME/.gem/ruby/2.3.3/bin" # Add gems

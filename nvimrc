@@ -74,6 +74,8 @@ Plugin 'c.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'posva/vim-vue'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'python-mode/python-mode'
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -298,7 +300,6 @@ let g:indent_guides_start_level = 2
 let g:neomake_echo_current_error=1
 let g:neomake_verbose=0
 let g:neomake_ruby_enabled_makers         = ['mri', 'rubocop']
-let g:neomake_rust_enabled_makers         = []
 let g:neomake_javascript_enabled_makers   = ['eslint']
 let g:neomake_haskell_enabled_makers      = ['hlint', 'ghcmod']
 let g:neomake_coffee_enabled_makers = ['coffeelint']
@@ -408,12 +409,18 @@ nmap ga <Plug>(EasyAlign)
 tnoremap <Esc> <C-\><C-n>
 
 " This weeks favorite colorscheme
-colorscheme sol
+colorscheme railscasts
+autocmd FileType * if &diff | colorscheme neverland2-darker | endif
 
 " Custom Functions
-function Review()
+function! Review(...)
   echom "Starting review in new tab."
+  let base = exists(a:0) ? a:0 : "develop"
   tabnew
-  r !git diff develop..HEAD
+  setlocal buftype=nofile bufhidden=hide noswapfile
+  execute "r !git diff ". base ."..HEAD"
   setfiletype git
 endfunction
+command! Review call Review()
+
+nmap <C-Space> $zf%

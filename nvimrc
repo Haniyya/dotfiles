@@ -13,7 +13,7 @@ Plugin 'Shougo/vimproc.vim'
 
 " Utility and clients
 Plugin 'tpope/vim-endwise'
-Plugin 'benekastah/neomake'
+Plugin 'neomake/neomake'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'shougo/deoplete.nvim'
@@ -31,7 +31,7 @@ Plugin 'xolox/vim-notes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jceb/vim-orgmode'
+"Plugin 'jceb/vim-orgmode'
 Plugin 'junegunn/goyo.vim'
 
 " Code styling
@@ -41,11 +41,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'junegunn/limelight.vim'
 
 " Language Specific Plugins
-Plugin 'QMonkey/monkey-vim'
-Plugin 'rawsource/Monkey-VIM'
-Plugin 'Quramy/vim-js-pretty-template'
+"Plugin 'QMonkey/monkey-vim'
+"Plugin 'rawsource/Monkey-VIM'
+"Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'sebastianmarkow/deoplete-rust'
-Plugin 'Quramy/tsuquyomi'
+"Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'xolox/vim-misc'
 Plugin 'leafo/moonscript-vim'
@@ -62,6 +62,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-rails'
 Plugin 'pangloss/vim-javascript'
+"Plugin 'othree/es.next.syntax.vim'
 Plugin 'burnettk/vim-angular'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'noprompt/vim-yardoc'
@@ -76,6 +77,11 @@ Plugin 'itchyny/vim-haskell-indent'
 Plugin 'posva/vim-vue'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'python-mode/python-mode'
+Plugin 'hallison/vim-rdoc'
+Plugin 'chrisbra/Colorizer'
+"Plugin 'mxw/vim-jsx'
+Plugin 'neoclide/vim-jsx-improve'
+Plugin 'carlitux/deoplete-ternjs'
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -160,16 +166,16 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
+" Use The ripgrep https://github.com/BurntSushi/ripgrep
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 endif
 
 "Numbers
@@ -255,10 +261,14 @@ let g:airline#extensions#tabline#enabled = 1
 "Set Bash as shell
 set shell=zsh
 
+" set jsx highlighting in js files
+let g:jsx_ext_required = 0
+
 "Rust settings
 let g:racer_cmd = "racer"
 let $RUST_SRC_PATH="/home/paul/rust/src"
 let g:user_emmet_leader_key='<C-Z>'
+let g:rustfmt_autosave = 1
 let g:clang_user_options='|| exit 0'
 let g:clang_complete_copen=1
 let g:clang_hl_errors=1
@@ -274,7 +284,7 @@ let g:rubycomplete_use_bundler = 1
 let g:vim_markdown_folding_disabled = 1
 
 " Language German by default
-set spelllang=de
+set spelllang=en
 
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -300,6 +310,7 @@ let g:indent_guides_start_level = 2
 let g:neomake_echo_current_error=1
 let g:neomake_verbose=0
 let g:neomake_ruby_enabled_makers         = ['mri', 'rubocop']
+let g:neomake_rust_enabled_makers         = ['cargo']
 let g:neomake_javascript_enabled_makers   = ['eslint']
 let g:neomake_haskell_enabled_makers      = ['hlint', 'ghcmod']
 let g:neomake_coffee_enabled_makers = ['coffeelint']
@@ -409,7 +420,8 @@ nmap ga <Plug>(EasyAlign)
 tnoremap <Esc> <C-\><C-n>
 
 " This weeks favorite colorscheme
-colorscheme railscasts
+" colorscheme railscasts
+colorscheme Tomorrow-Night
 autocmd FileType * if &diff | colorscheme neverland2-darker | endif
 
 " Custom Functions

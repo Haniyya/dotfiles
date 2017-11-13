@@ -91,3 +91,6 @@ source $HOME/.cargo/env
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin" # Add gems
 export PATH="$PATH:$HOME/.gem/ruby/2.3.3/bin" # Add gems
+export EDITOR="nvim"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm

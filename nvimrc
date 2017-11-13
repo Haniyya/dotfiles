@@ -44,7 +44,7 @@ Plugin 'junegunn/limelight.vim'
 "Plugin 'QMonkey/monkey-vim'
 "Plugin 'rawsource/Monkey-VIM'
 "Plugin 'Quramy/vim-js-pretty-template'
-Plugin 'sebastianmarkow/deoplete-rust'
+"Plugin 'sebastianmarkow/deoplete-rust'
 "Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'xolox/vim-misc'
@@ -66,7 +66,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'burnettk/vim-angular'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'noprompt/vim-yardoc'
-Plugin 'racer-rust/vim-racer'
+"Plugin 'racer-rust/vim-racer'
 Plugin 'lervag/vimtex'
 Plugin 'elmcast/elm-vim'
 Plugin 'zchee/deoplete-clang'
@@ -82,6 +82,7 @@ Plugin 'chrisbra/Colorizer'
 "Plugin 'mxw/vim-jsx'
 Plugin 'neoclide/vim-jsx-improve'
 Plugin 'carlitux/deoplete-ternjs'
+Plugin 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
 call vundle#end()            " required
 syntax enable
 filetype plugin indent on    " required
@@ -434,5 +435,19 @@ function! Review(...)
   setfiletype git
 endfunction
 command! Review call Review()
+
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'ruby': ['language_server-ruby'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 nmap <C-Space> $zf%

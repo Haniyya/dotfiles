@@ -16,7 +16,8 @@ Plugin 'tpope/vim-endwise'
 Plugin 'neomake/neomake'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
-Plugin 'shougo/deoplete.nvim'
+Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plugin 'junegunn/fzf'
 Plugin 'danro/rename.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -24,6 +25,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'majutsushi/tagbar'
 Plugin 'wting/gitsessions.vim'
+Plugin 'vitalk/vim-simple-todo'
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'
@@ -66,7 +68,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'burnettk/vim-angular'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'noprompt/vim-yardoc'
-"Plugin 'racer-rust/vim-racer'
+Plugin 'racer-rust/vim-racer'
 Plugin 'lervag/vimtex'
 Plugin 'elmcast/elm-vim'
 Plugin 'zchee/deoplete-clang'
@@ -398,18 +400,9 @@ let g:deoplete#omni#input_patterns.tex = '\\(?:'
       \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
       \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
       \ .')'
-
-let g:lua_check_syntax = 0
-let g:lua_complete_omni = 1
-let g:lua_complete_dynamic = 0
-let g:lua_define_completion_mappings = 0
-
-if !exists('g:deoplete#omni#functions')
-  let g:deoplete#omni#functions = {}
-endif
-let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
+let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
-"let g:deoplete#omni#functions.lua = 'xolox#lua#completefunc'
+let g:deoplete#omni#functions.lua = 'xolox#lua#completefunc'
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -440,13 +433,16 @@ set hidden
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'ruby': ['language_server-ruby'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
     \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> F :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> R :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <C-i> :call LanguageClient_workspace_symbol()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 

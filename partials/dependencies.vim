@@ -69,5 +69,9 @@ Plugin 'hallison/vim-rdoc'
 Plugin 'chrisbra/Colorizer'
 Plugin 'neoclide/vim-jsx-improve'
 Plugin 'carlitux/deoplete-ternjs'
-Plugin 'autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'}
+Plugin 'sebastianmarkow/deoplete-rust'
+Plugin 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 call vundle#end()            " required

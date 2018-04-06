@@ -1,3 +1,5 @@
+let mapleader=","
+
 " Custom Functions
 function! Review(...)
   echom "Starting review in new tab."
@@ -8,6 +10,13 @@ function! Review(...)
   setfiletype git
 endfunction
 command! Review call Review()
+
+function! GuessDefinition()
+  :grep '(def\|class\|module) <cword>' . "" . $GEM_HOME
+  :copen
+endfunction
+command! GuessDefinition call GuessDefinition()
+nnoremap <silent> gr :call GuessDefinition()<CR>
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -53,8 +62,10 @@ map <F3> :GitSessionLoad <cr>     " And load session with F3
 
 nnoremap <silent> F :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> R :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <C-i> :call LanguageClient_workspace_symbol()<CR>
+nnoremap <silent> <C-k> :call LanguageClient_workspace_symbol()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <F7> :call LanguageClient_textDocument_rename()<CR>
 
 nmap <C-Space> $zf%
+
+source $HOME/dotfiles/partials/ruby_test.vim

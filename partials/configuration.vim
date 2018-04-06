@@ -3,7 +3,7 @@ if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
   let g:ctrlp_use_caching = 0
   " Use Rg over Grep
-  set grepprg=rg\ --vimgrep
+  set grepprg=rg\ --vimgrep\ --no-messages\ -e
 endif
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
@@ -34,3 +34,5 @@ endif
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
+set t_Co=256 " 256 colors

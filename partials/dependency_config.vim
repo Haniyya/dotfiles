@@ -78,13 +78,14 @@ augroup end
 let g:elm_format_autosave = 1
 
 " Use deoplete.
+" let g:deoplete#complete_method = "omnifunc"
 let g:deoplete#enable_at_startup = 1
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
-
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#auto_complete_start_length = 0
 " Deoplete Rust
-let g:deoplete#sources#rust#racer_binary='/home/paul/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/paul/rust/src'
+let g:deoplete#sources#rust#show_duplicates=0
+let g:deoplete#sources#rust#racer_binary=$HOME . "/.cargo/bin/racer"
+let g:deoplete#sources#rust#rust_source_path=$HOME . "/rust/src"
 
 " Tagbar
 let g:tagbar_type_ruby = {

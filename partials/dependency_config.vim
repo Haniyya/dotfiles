@@ -161,3 +161,6 @@ let g:LanguageClient_serverCommands = {
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
+
+" AutoTag
+let g:autotagTagsFile=".tags"

@@ -22,6 +22,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'wting/gitsessions.vim'
 Plugin 'vitalk/vim-simple-todo'
 Plugin 'mbbill/undotree'
+Plugin 'craigemery/vim-autotag'
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'

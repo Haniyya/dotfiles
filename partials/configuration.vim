@@ -22,11 +22,12 @@ if filereadable($HOME . "/.vimrc.local")
 endif
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-"Set Bash as shell
+"Set Zsh as shell
 set shell=zsh
 
-" Language German by default
-set spelllang=en
+" Language English by default
+set spelllang=en_us
+autocmd FileType ruby setlocal spell
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles

@@ -83,19 +83,21 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+#
+source ~/.git-flow-completion.zsh
 export TERM="xterm-256color"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+export EDITOR="nvim"
+ZSH_THEME="gitster"
 source $HOME/.cargo/env
-
+alias be="bundle exec"
 export PATH="$PATH:$HOME/.rvm/bin"            # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin" # Add gems
 export PATH="$PATH:$HOME/.gem/ruby/2.3.3/bin" # Add gems
-export PATH="$PATH:$HOME/.local/bin"          # Add stack install
-export EDITOR="nvim"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-# add Cabal's bin directory to the executable search PATH if it exists
-if [ -d "$HOME/.cabal/bin" ] ; then
-    PATH="$HOME/.cabal/bin:$PATH"
-fi
+export PATH="$PATH:$HOME./local/bin"          # Add stack install stuff
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/projects/go
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/imagemagick6/pkgconfig
+export AF_PATH=/usr/share/
+export PATH=/opt/FriendlyARM/toolschain/4.4.3/bin/:$PATH
+export LANG="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"

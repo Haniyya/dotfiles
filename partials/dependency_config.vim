@@ -1,13 +1,5 @@
 " Airline Config
-"set statusline+=%{SyntasticStatuslineFlag()}
-"let g:airline_section_b = '%{strftime("%c")}'
-"let g:airline_section_y = 'BN: %{bufnr("%")}'
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'dark'
 let g:airline#extensions#tabline#enabled = 1
-
-" set jsx highlighting in js files
-let g:jsx_ext_required = 0
 
 "Rust settings
 let g:racer_cmd = "racer"
@@ -27,13 +19,6 @@ let g:rubycomplete_use_bundler = 1
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
-
-" Indent Guides stuff
-set ts=2 sw=2 et
-let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
-let g:indent_guides_start_level = 2
 
 " Neomake Settings
 let g:neomake_echo_current_error=1
@@ -77,8 +62,14 @@ augroup end
 " Autoformat elm
 let g:elm_format_autosave = 1
 
+" (Assuming settings like the following)
+let g:deoplete#omni#functions = {}
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['file', 'neosnippet']
+let g:deoplete#omni#input_patterns = {}
+
 " Use deoplete.
-" let g:deoplete#complete_method = "omnifunc"
+let g:deoplete#complete_method = "omnifunc"
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_refresh_always = 1
 let g:deoplete#auto_complete_start_length = 0
@@ -87,52 +78,13 @@ let g:deoplete#sources#rust#show_duplicates=0
 let g:deoplete#sources#rust#racer_binary=$HOME . "/.cargo/bin/racer"
 let g:deoplete#sources#rust#rust_source_path=$HOME . "/rust/src"
 
-" Tagbar
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'f:methods',
-        \ 'F:singleton methods'
-    \ ]
-\ }
-
- let g:tagbar_type_rust = {
-    \ 'ctagstype' : 'rust',
-    \ 'kinds' : [
-        \'T:types,type definitions',
-        \'f:functions,function definitions',
-        \'g:enum,enumeration names',
-        \'s:structure names',
-        \'m:modules,module names',
-        \'c:consts,static constants',
-        \'t:traits,traits',
-        \'i:impls,trait implementations',
-    \]
-    \}
-
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Deoplete vimtex
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = '\\(?:'
-      \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-      \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-      \ . '|hyperref\s*\[[^]]*'
-      \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-      \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-      \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-      \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-      \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-      \ .')'
-let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions      = {}
 let g:deoplete#omni#functions.ruby = 'rubycomplete#Complete'
-let g:deoplete#omni#functions.lua = 'xolox#lua#completefunc'
+let g:deoplete#omni#functions.lua  = 'xolox#lua#completefunc'
+
+let g:deoplete#omni#functions.elm = ['elm#Complete']
+let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+let g:deoplete#sources.elm = ['omni'] + g:deoplete#sources._
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -157,10 +109,8 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'haskell':    ['hie', '--lsp'],
+    \ 'clojure':    ['clojure-lsp'],
     \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
-
-" AutoTag
-let g:autotagTagsFile=".tags"

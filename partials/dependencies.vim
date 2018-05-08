@@ -11,10 +11,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'junegunn/fzf.vim', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'

@@ -114,3 +114,9 @@ let g:LanguageClient_serverCommands = {
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
+
+" Ctrlp
+let g:ctrlp_extensions = ['line']
+
+" Fzf
+nnoremap <C-p> :Ag<Enter>

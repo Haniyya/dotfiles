@@ -68,4 +68,9 @@ nnoremap <silent> <F7> :call LanguageClient_textDocument_rename()<CR>
 
 nmap <C-Space> $zf%
 
-source $HOME/dotfiles/partials/ruby_test.vim
+"source $HOME/dotfiles/partials/ruby_test.vim
+
+nnoremap <leader>f :call RunCurrentSpecFile()<cr>
+nnoremap <leader>t :call RunNearestSpec()<cr>
+nnoremap <leader>a :call RunAllSpecs()<cr>
+nnoremap <leader>l :call RunLastSpec()<cr>

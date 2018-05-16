@@ -4,6 +4,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Utility and clients
+Plugin 'tyru/open-browser.vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'neomake/neomake'
 Plugin 'scrooloose/nerdcommenter'
@@ -16,11 +17,14 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'junegunn/fzf.vim', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'tpope/vim-dispatch'
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 " Code styling
 Plugin 'junegunn/vim-easy-align'
@@ -33,6 +37,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rvm'
 Plugin 'tpope/vim-haml'
+Plugin 'thoughtbot/vim-rspec'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fireplace'

@@ -105,7 +105,7 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'haskell':    ['hie', '--lsp'],
@@ -120,3 +120,6 @@ let g:ctrlp_extensions = ['line']
 
 " Fzf
 nnoremap <C-p> :Ag<Enter>
+
+" Rspec runner
+let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"

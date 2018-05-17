@@ -38,8 +38,8 @@ let g:neomake_error_sign = {
   \ 'text': 'E',
   \ 'texthl': 'ErrorMsg',
   \ }
-autocmd! BufWritePost,BufEnter * Neomake
-autocmd! BufWritePost *.rs NeomakeProject cargo
+"autocmd! BufWritePost,BufEnter * Neomake
+"autocmd! BufWritePost *.rs NeomakeProject cargo
 
 " define elm-make maker
 let g:neomake_elm_elmmake_maker = {

@@ -6,7 +6,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Utility and clients
 Plugin 'tyru/open-browser.vim'
 Plugin 'tpope/vim-endwise'
-Plugin 'neomake/neomake'
+"Plugin 'neomake/neomake'
+Plugin 'w0rp/ale'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

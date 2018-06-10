@@ -108,7 +108,6 @@ let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'haskell':    ['hie', '--lsp'],
     \ 'clojure':    ['clojure-lsp'],
     \ }
 
@@ -123,3 +122,5 @@ nnoremap <C-p> :Ag<Enter>
 
 " Rspec runner
 let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>

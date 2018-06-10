@@ -10,7 +10,9 @@ Plugin 'tpope/vim-endwise'
 Plugin 'w0rp/ale'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
-Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plugin 'roxma/nvim-completion-manager'
+Plugin 'roxma/nvim-cm-racer'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 "Plugin 'kien/ctrlp.vim'
@@ -35,6 +37,8 @@ Plugin 'yggdroot/indentline'
 Plugin 'kien/rainbow_parentheses.vim'
 
 " Language Specific Plugins
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rvm'
 Plugin 'tpope/vim-haml'
@@ -45,7 +49,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'clojure-vim/async-clj-omni'
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'posva/vim-vue'
-Plugin 'sebastianmarkow/deoplete-rust'
+"Plugin 'sebastianmarkow/deoplete-rust'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'ElmCast/elm-vim'
 Plugin 'autozimu/LanguageClient-neovim', {

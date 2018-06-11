@@ -37,6 +37,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 " Language Specific Plugins
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'roxma/ncm-ruby'
 Plugin 'rust-lang/rust.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rvm'

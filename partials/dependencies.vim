@@ -35,6 +35,8 @@ Plugin 'yggdroot/indentline'
 Plugin 'kien/rainbow_parentheses.vim'
 
 " Language Specific Plugins
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rvm'
 Plugin 'tpope/vim-haml'

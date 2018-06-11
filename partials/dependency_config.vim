@@ -106,8 +106,6 @@ set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
     \ 'haskell':    ['hie', '--lsp'],
     \ 'clojure':    ['clojure-lsp'],
     \ }

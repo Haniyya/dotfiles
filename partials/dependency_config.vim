@@ -106,7 +106,6 @@ set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
-    \ 'haskell':    ['hie', '--lsp'],
     \ 'clojure':    ['clojure-lsp'],
     \ }
 
@@ -121,3 +120,5 @@ nnoremap <C-p> :Ag<Enter>
 
 " Rspec runner
 let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>

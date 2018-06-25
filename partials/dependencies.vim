@@ -19,6 +19,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'junegunn/fzf.vim', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'tpope/vim-dispatch'
+Plugin 'mattn/webapi-vim'
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'
@@ -47,7 +48,9 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
 Plugin 'clojure-vim/async-clj-omni'
+Plugin 'SevereOverfl0w/clojure-check', {'do': './install'}
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'posva/vim-vue'
 Plugin 'gorodinskiy/vim-coloresque'

@@ -43,7 +43,6 @@ set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
-    \ 'clojure':    ['clojure-lsp'],
     \ }
 
 " Automatically start language servers.
@@ -58,4 +57,7 @@ nnoremap <C-p> :Ag<Enter>
 " Rspec runner
 let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
 
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" Ale fixers
+let b:ale_fixers = {'rust': ['rustfmt']}
+
+autocmd FileType rust nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>

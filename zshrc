@@ -58,6 +58,7 @@ plugins=(
         bundler
         rails
         rake-fast
+        rvm
         )
 
 source $ZSH/oh-my-zsh.sh

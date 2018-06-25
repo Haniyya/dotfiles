@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="muse"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +51,14 @@ export ZSH=$HOME/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+        git
+        lein
+        git-flow
+        bundler
+        rails
+        rake-fast
+        )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,5 +106,5 @@ export GOPATH=$HOME/projects/go
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/imagemagick6/pkgconfig
 export AF_PATH=/usr/share/
 export PATH=/opt/FriendlyARM/toolschain/4.4.3/bin/:$PATH
-export LANG="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
+export LANG="en_GB.UTF-8"
+export LC_CTYPE="en_GB.UTF-8"

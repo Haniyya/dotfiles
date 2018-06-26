@@ -1,5 +1,6 @@
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffee
 autocmd BufRead,BufNewFile *.rs nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+autocmd FileType rust nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 
 " Airline Config
 let g:airline#extensions#tabline#enabled = 1
@@ -46,7 +47,6 @@ set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
-    \ 'clojure':    ['clojure-lsp'],
     \ }
 
 " Automatically start language servers.
@@ -63,3 +63,6 @@ let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="S-<tab>"
+
+" Ale fixers
+let b:ale_fixers = {'rust': ['rustfmt']}

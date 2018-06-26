@@ -1,3 +1,6 @@
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffee
+autocmd BufRead,BufNewFile *.rs nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+
 " Airline Config
 let g:airline#extensions#tabline#enabled = 1
 
@@ -58,4 +61,5 @@ nnoremap <C-p> :Ag<Enter>
 " Rspec runner
 let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
 
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" UltiSnips
+let g:UltiSnipsExpandTrigger="S-<tab>"

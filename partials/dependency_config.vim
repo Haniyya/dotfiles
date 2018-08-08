@@ -62,7 +62,7 @@ nnoremap <C-p> :Ag<Enter>
 let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="S-<tab>"
+let g:UltiSnipsExpandTrigger="<CR>"
 
 " Ale fixers
 let b:ale_fixers = {'rust': ['rustfmt']}

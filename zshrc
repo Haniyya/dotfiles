@@ -59,6 +59,7 @@ plugins=(
         rails
         rake-fast
         rvm
+        dotenv
         )
 
 source $ZSH/oh-my-zsh.sh
@@ -94,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 #
 
 source ~/.git-flow-completion.zsh
-export TERM="xterm-256color"
+export TERM="screen-256color"
 export EDITOR="nvim"
 source $HOME/.cargo/env
 alias be="bundle exec"
@@ -109,3 +110,4 @@ export AF_PATH=/usr/share/
 export PATH=/opt/FriendlyARM/toolschain/4.4.3/bin/:$PATH
 export LANG="en_GB.UTF-8"
 export LC_CTYPE="en_GB.UTF-8"
+unalias rg

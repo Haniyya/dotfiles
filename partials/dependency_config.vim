@@ -60,4 +60,24 @@ let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
 " Ale fixers
 let b:ale_fixers = {'rust': ['rustfmt']}
 
+" Ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" note that you must keep `noinsert` in completeopt, you must not use
+" `longest`. The others are optional. Read `:help completeopt` for
+" more info
+set completeopt=noinsert,menuone,noselect
+
+" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+let g:UltiSnipsExpandTrigger = "<c-l>"
 autocmd FileType rust nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>

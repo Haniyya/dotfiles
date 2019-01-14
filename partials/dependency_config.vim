@@ -43,6 +43,7 @@ set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
     \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
+    \ 'lua': ['lua-lsp'],
     \ }
 
 " Automatically start language servers.

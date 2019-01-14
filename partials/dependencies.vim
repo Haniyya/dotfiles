@@ -50,6 +50,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-classpath'
 Plugin 'clojure-vim/async-clj-omni'
+Plugin 'tbastos/vim-lua'
 "Plugin 'SevereOverfl0w/clojure-check', {'do': './install'}
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'posva/vim-vue'

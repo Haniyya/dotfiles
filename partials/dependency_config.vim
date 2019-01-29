@@ -23,6 +23,7 @@ let g:rubycomplete_use_bundler = 1
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
 " Autoformat elm
 let g:elm_format_autosave = 1
@@ -38,7 +39,7 @@ tnoremap <Esc> <C-\><C-n>
 
 " This weeks favorite colorscheme
 " colorscheme railscasts
-colorscheme Tomorrow-Night
+colorscheme railscasts
 autocmd FileType * if &diff | colorscheme neverland2-darker | endif
 
 " Show textwidth
@@ -46,7 +47,9 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust':       ['rustup', 'run', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
     \ }
 
 " Automatically start language servers.

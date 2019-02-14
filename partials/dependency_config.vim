@@ -47,14 +47,9 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
-<<<<<<< HEAD
-    \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
-    \ 'lua': ['lua-lsp'],
-=======
     \ 'rust':       ['rustup', 'run', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
->>>>>>> 49a9db87251bf4e1296a84445fe67d4c840ec39e
     \ }
 
 " Automatically start language servers.

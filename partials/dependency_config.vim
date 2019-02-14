@@ -34,7 +34,7 @@ tnoremap <Esc> <C-\><C-n>
 
 " This weeks favorite colorscheme
 " colorscheme railscasts
-colorscheme Tomorrow-Night
+colorscheme railscasts
 autocmd FileType * if &diff | colorscheme neverland2-darker | endif
 
 " Show textwidth

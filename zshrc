@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_GB.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -109,3 +109,4 @@ export AF_PATH=/usr/share/
 export PATH=/opt/FriendlyARM/toolschain/4.4.3/bin/:$PATH
 export LANG="en_GB.UTF-8"
 export LC_CTYPE="en_GB.UTF-8"
+export LC_ALL="en_GB.UTF-8"

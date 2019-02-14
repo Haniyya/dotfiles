@@ -1,3 +1,7 @@
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffee
+autocmd BufRead,BufNewFile *.rs nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+autocmd FileType rust nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+
 " Airline Config
 let g:airline#extensions#tabline#enabled = 1
 
@@ -19,6 +23,7 @@ let g:rubycomplete_use_bundler = 1
 
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
 " Autoformat elm
 let g:elm_format_autosave = 1
@@ -42,8 +47,14 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
+<<<<<<< HEAD
     \ 'rust':       ['rustup', 'run', 'nightly', 'rls'],
     \ 'lua': ['lua-lsp'],
+=======
+    \ 'rust':       ['rustup', 'run', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+>>>>>>> 49a9db87251bf4e1296a84445fe67d4c840ec39e
     \ }
 
 " Automatically start language servers.
@@ -58,27 +69,8 @@ nnoremap <C-p> :Ag<Enter>
 " Rspec runner
 let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
 
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<CR>"
+
 " Ale fixers
 let b:ale_fixers = {'rust': ['rustfmt']}
-
-" Ncm2
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" note that you must keep `noinsert` in completeopt, you must not use
-" `longest`. The others are optional. Read `:help completeopt` for
-" more info
-set completeopt=noinsert,menuone,noselect
-
-" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
-
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
-
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-let g:UltiSnipsExpandTrigger = "<c-l>"
-autocmd FileType rust nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>

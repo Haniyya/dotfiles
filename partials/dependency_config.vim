@@ -49,7 +49,7 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust':       ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust':       ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ }
@@ -71,3 +71,9 @@ let g:UltiSnipsExpandTrigger="<CR>"
 
 " Ale fixers
 let b:ale_fixers = {'rust': ['rustfmt']}
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect

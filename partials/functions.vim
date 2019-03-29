@@ -18,6 +18,13 @@ endfunction
 command! GuessDefinition call GuessDefinition()
 nnoremap <silent> gr :call GuessDefinition()<CR>
 
+function! SetRspecCommand()
+  let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
+  if expand('%') =~? '_test.rb'
+    let g:rspec_command = "Dispatch bundle exec m {spec}"
+  end
+endfunction
+
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning

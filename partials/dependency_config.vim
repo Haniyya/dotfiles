@@ -1,4 +1,5 @@
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffee
+autocmd BufRead,BufNewFile *.md setlocal conceallevel=0
 autocmd BufRead,BufNewFile *.rs nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 autocmd FileType rust nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 
@@ -25,6 +26,7 @@ let g:rubycomplete_use_bundler = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
+
 " Autoformat elm
 let g:elm_format_autosave = 1
 
@@ -47,7 +49,7 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust':       ['rustup', 'run', 'rls'],
+    \ 'rust':       ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ }

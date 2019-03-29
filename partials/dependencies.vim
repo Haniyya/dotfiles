@@ -53,6 +53,7 @@ Plugin 'itchyny/vim-haskell-indent'
 Plugin 'posva/vim-vue'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'ElmCast/elm-vim'
+Plugin 'kylef/apiblueprint.vim'
 Plugin 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',

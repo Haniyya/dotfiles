@@ -10,14 +10,13 @@ Plugin 'w0rp/ale'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ncm2/ncm2'
-Plugin 'ncm2/ncm2-racer'
-Plugin 'roxma/nvim-cm-racer'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'junegunn/fzf.vim', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'mattn/webapi-vim'
 

@@ -49,13 +49,19 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust':       ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Ctrlp
 let g:ctrlp_extensions = ['line']
@@ -70,9 +76,13 @@ let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
 let g:UltiSnipsExpandTrigger="<CR>"
 
 " Ale fixers
-let b:ale_fixers = {'rust': ['rustfmt']}
+let g:ale_linters = {'rust': ['rls', 'cargo']}
+let g:ale_fixers = {'rust': ['cargo', 'rustfmt']}
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
 " enable ncm2 for all buffers
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
 autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " IMPORTANT: :help Ncm2PopupOpen for more information

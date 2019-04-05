@@ -47,7 +47,7 @@ map <Leader>ct :!ctags -R .<CR>
 nnoremap <leader><leader> <c-^>
 
 " Undotree
-nnoremap <F5> :UndotreeToggle<cr>
+" nnoremap <F5> :UndotreeToggle<cr>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>

@@ -25,6 +25,7 @@ let g:rubycomplete_use_bundler = 1
 " Markdown config
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 
 " Autoformat elm
@@ -52,14 +53,19 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'ruby': ['solargraph', 'stdio'],
     \ }
+
+" \ 'clojure': ["bash", "-c", 'clojure-lsp'],
+
+"let g:UltiSnipsExpandTrigger="<tab>"
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
@@ -70,13 +76,15 @@ let g:ctrlp_extensions = ['line']
 nnoremap <C-p> :Ag<Enter>
 
 " Rspec runner
-let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<CR>"
+if filereadable("./config/application.rb")
+  let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
+else
+  let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+endif
 
 " Ale fixers
-let g:ale_linters = {'rust': ['rls', 'cargo']}
+let g:ale_linters = {'rust': ['rls', 'cargo'], 'clojure': ['joker']}
 let g:ale_fixers = {'rust': ['cargo', 'rustfmt']}
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
@@ -84,6 +92,17 @@ let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd BufEnter * call deoplete#disable()
+autocmd BufEnter *.clj call ncm2#disable_for_buffer()
+autocmd BufEnter *.clj call deoplete#enable()
+autocmd BufEnter *.clj let maplocalleader = 'ö'
 
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
+" Press enter key to trigger snippet expansion
+" The parameters are the same as `:help feedkeys()`
+" inoremap <silent> <buffer> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+" c-j c-k for moving in snippet
+" let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0

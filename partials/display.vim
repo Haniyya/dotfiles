@@ -49,9 +49,6 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.moon set filetype=moon
   autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
-  autocmd FileType typescript JsPreTmpl html
-  autocmd FileType typescript syn clear foldBraces
-
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
   autocmd FileType latex setlocal spell

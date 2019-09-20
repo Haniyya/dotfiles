@@ -114,3 +114,4 @@ export LC_ALL="en_GB.UTF-8"
 unalias rg
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/nvm/init-nvm.sh

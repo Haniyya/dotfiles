@@ -1,7 +1,5 @@
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffee
 autocmd BufRead,BufNewFile *.md setlocal conceallevel=0
-autocmd BufRead,BufNewFile *.rs nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-autocmd FileType rust nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 
 " Airline Config
 let g:airline#extensions#tabline#enabled = 1
@@ -50,12 +48,16 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['ra_lsp_server'],
     \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
     \ 'ruby': ['solargraph', 'stdio'],
+    \ 'c':  ['cquery'],
     \ }
 
+
+"\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"\ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'ra_lsp_server'],
 " \ 'clojure': ["bash", "-c", 'clojure-lsp'],
 
 "let g:UltiSnipsExpandTrigger="<tab>"
@@ -68,12 +70,13 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 
 " Ctrlp
 let g:ctrlp_extensions = ['line']
 
 " Fzf
-nnoremap <C-p> :Ag<Enter>
+nnoremap <C-p> :Rg<Enter>
 
 " Rspec runner
 
@@ -84,18 +87,20 @@ else
 endif
 
 " Ale fixers
-let g:ale_linters = {'rust': ['rls', 'cargo'], 'clojure': ['joker']}
+let g:ale_linters = {'rust': ['rls', 'cargo'], 'clojure': ['clj-kondo'], 'ruby': ['standardrb']}
 let g:ale_fixers = {'rust': ['cargo', 'rustfmt']}
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_ruby_standardrb_executable = 'bundle'
 
 " enable ncm2 for all buffers
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd BufEnter * call deoplete#disable()
 autocmd BufEnter *.clj call ncm2#disable_for_buffer()
-autocmd BufEnter *.clj call deoplete#enable()
-autocmd BufEnter *.clj let maplocalleader = 'ö'
+autocmd BufEnter *.clj let maplocalleader = ','
+autocmd BufEnter *.cljs let maplocalleader = ','
+
+let g:conjure_log_direction = "horizontal"
 
 " Press enter key to trigger snippet expansion
 " The parameters are the same as `:help feedkeys()`
@@ -106,3 +111,15 @@ autocmd BufEnter *.clj let maplocalleader = 'ö'
 let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
+
+au User Ncm2Plugin call ncm2#register_source({
+        \ 'name': 'conjure_clj',
+        \ 'mark': 'clj',
+        \ 'priority': 9,
+        \ 'word_pattern': '[\w!$%&*+/:<=>?@\^_~\-\.#]+',
+        \ 'complete_pattern': ['\.', '/'],
+        \ 'complete_length': 0,
+        \ 'matcher': 'none',
+        \ 'scope': ['clojure'],
+        \ 'on_complete': ['ncm2#on_complete#omni', 'conjure#omnicomplete'],
+        \ })

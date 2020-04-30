@@ -103,6 +103,7 @@ export PATH="$PATH:$HOME/.rvm/bin"            # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin" # Add gems
 export PATH="$PATH:$HOME/.gem/ruby/2.3.3/bin" # Add gems
 export PATH="$PATH:$HOME./local/bin"          # Add stack install stuff
+export PATH="$PATH:$(yarn global bin --offline)"          # Add yarn commands
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/projects/go
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/imagemagick6/pkgconfig
@@ -114,4 +115,14 @@ export LC_ALL="en_GB.UTF-8"
 unalias rg
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh --offline
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/paul/Downloads/gcloud/google-cloud-sdk/path.zsh.inc' ]; then . '/home/paul/Downloads/gcloud/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/paul/Downloads/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/paul/Downloads/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
+
+eval "$(starship init zsh)"
+
+alias conjure-repl='clojure -J-Dclojure.server.jvm="{:port 5678 :accept clojure.core.server/io-prepl}"'

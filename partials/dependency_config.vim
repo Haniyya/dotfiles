@@ -48,13 +48,14 @@ set textwidth=120
 set colorcolumn=+1
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['ra_lsp_server'],
+    \ 'rust': ['rust-analyzer'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['typescript-language-server', '--stdio'],
     \ 'ruby': ['solargraph', 'stdio'],
     \ 'c':  ['cquery'],
     \ }
 
+    "\ 'clojure':  ['clojure-lsp'],
 
 "\ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 "\ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'ra_lsp_server'],
@@ -76,7 +77,7 @@ nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 let g:ctrlp_extensions = ['line']
 
 " Fzf
-nnoremap <C-p> :Rg<Enter>
+nnoremap <C-p> :Ag<Enter>
 
 " Rspec runner
 
@@ -96,11 +97,11 @@ let g:ale_ruby_standardrb_executable = 'bundle'
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd BufEnter *.clj call ncm2#disable_for_buffer()
+"autocmd BufEnter *.clj call ncm2#disable_for_buffer()
 autocmd BufEnter *.clj let maplocalleader = ','
 autocmd BufEnter *.cljs let maplocalleader = ','
 
-let g:conjure_log_direction = "horizontal"
+"let g:conjure_log_direction = "horizontal"
 
 " Press enter key to trigger snippet expansion
 " The parameters are the same as `:help feedkeys()`
@@ -112,14 +113,14 @@ let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
-au User Ncm2Plugin call ncm2#register_source({
-        \ 'name': 'conjure_clj',
-        \ 'mark': 'clj',
-        \ 'priority': 9,
-        \ 'word_pattern': '[\w!$%&*+/:<=>?@\^_~\-\.#]+',
-        \ 'complete_pattern': ['\.', '/'],
-        \ 'complete_length': 0,
-        \ 'matcher': 'none',
-        \ 'scope': ['clojure'],
-        \ 'on_complete': ['ncm2#on_complete#omni', 'conjure#omnicomplete'],
-        \ })
+"au User Ncm2Plugin call ncm2#register_source({
+        "\ 'name': 'conjure_clj',
+        "\ 'mark': 'clj',
+        "\ 'priority': 9,
+        "\ 'word_pattern': '[\w!$%&*+/:<=>?@\^_~\-\.#]+',
+        "\ 'complete_pattern': ['\.', '/'],
+        "\ 'complete_length': 0,
+        "\ 'matcher': 'none',
+        "\ 'scope': ['clojure'],
+        "\ 'on_complete': ['ncm2#on_complete#omni', 'conjure#omnicomplete'],
+        "\ })

@@ -49,7 +49,8 @@ Plugin 'tpope/vim-haml'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-rails'
-Plugin 'Olical/conjure', { 'tag': 'v1.1.0', 'do': 'bin/compile'  }
+Plugin 'bhurlow/vim-parinfer'
+Plugin 'Olical/conjure'
 "Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plugin 'tpope/vim-fireplace'
 "Plugin 'tpope/vim-classpath'

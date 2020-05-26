@@ -95,9 +95,9 @@ let g:ale_ruby_standardrb_executable = 'bundle'
 
 " enable ncm2 for all buffers
 " IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-autocmd BufEnter * call ncm2#enable_for_buffer()
-"autocmd BufEnter *.clj call ncm2#disable_for_buffer()
+"set completeopt=noinsert,menuone,noselect
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+""autocmd BufEnter *.clj call ncm2#disable_for_buffer()
 autocmd BufEnter *.clj let maplocalleader = ','
 autocmd BufEnter *.cljs let maplocalleader = ','
 

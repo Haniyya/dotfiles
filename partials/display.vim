@@ -86,8 +86,8 @@ set statusline+=%#warningmsg#
 
 " This weeks favorite colorscheme
 " colorscheme railscasts
-colorscheme railscasts
-autocmd FileType * if &diff | colorscheme neverland2-darker | endif
+colorscheme gruvbox
+"autocmd FileType * if &diff | colorscheme neverland2-darker | endif
 
 " Show textwidth
 set textwidth=120

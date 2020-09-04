@@ -19,7 +19,8 @@ command! GuessDefinition call GuessDefinition()
 nnoremap <silent> gr :call GuessDefinition()<CR>
 
 function! SetRspecCommand()
-  let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
+  let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+
   if expand('%') =~? '_test.rb'
     let g:rspec_command = "Dispatch bundle exec m {spec}"
   end
@@ -55,8 +56,8 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
+"" Run commands that require an interactive shell
+"nnoremap <Leader>r :RunInInteractiveShell<space>
 " Open new split panes to right and bottom, which feels more natural set splitbelow set splitright
  " Quicker window movement nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -67,17 +68,11 @@ nnoremap <C-l> <C-w>l
 map <F2> :GitSessionSave <cr> " Quick write session with F2
 map <F3> :GitSessionLoad <cr>     " And load session with F3
 
-nnoremap <silent> F :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> R :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <C-k> :call LanguageClient_workspace_symbol()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F7> :call LanguageClient_textDocument_rename()<CR>
-
 nmap <C-Space> $zf%
 
 "source $HOME/dotfiles/partials/ruby_test.vim
 
 nnoremap <leader>f :call RunCurrentSpecFile()<cr>
 nnoremap <leader>t :call RunNearestSpec()<cr>
-nnoremap <leader>a :call RunAllSpecs()<cr>
+nnoremap <leader>s :call RunAllSpecs()<cr>
 nnoremap <leader>l :call RunLastSpec()<cr>

@@ -37,3 +37,6 @@ endif
 let g:html_indent_tags = 'li\|p'
 
 set t_Co=256 " 256 colors
+
+let maplocalleader = ','
+let mapleader = ','

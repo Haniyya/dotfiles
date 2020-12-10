@@ -23,6 +23,7 @@ Plugin 'wting/gitsessions.vim'
 Plugin 'vitalk/vim-simple-todo'
 Plugin 'mbbill/undotree'
 Plugin 'craigemery/vim-autotag'
+Plugin 'file:///Users/paulmartensen/projects/particles-nvim', {'pinned': 1}
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'

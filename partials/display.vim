@@ -87,7 +87,7 @@ set statusline+=%#warningmsg#
 " This weeks favorite colorscheme
 " colorscheme railscasts
 colorscheme gruvbox
-"autocmd FileType * if &diff | colorscheme neverland2-darker | endif
+autocmd FileType * if &diff | colorscheme neverland2-darker | endif
 
 " Show textwidth
 set textwidth=120
@@ -99,3 +99,7 @@ let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
+
+set termguicolors
+" In your init.vim AFTER loading plugins
+lua require'bufferline'.setup()

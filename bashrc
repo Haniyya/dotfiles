@@ -116,3 +116,5 @@ export PATH="$PATH:/home/paul/.cabal/bin" # Add Eclipse and eclimd
 alias be='bundle exec'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+[ -s "/Users/paulmartensen/.jabba/jabba.sh" ] && source "/Users/paulmartensen/.jabba/jabba.sh"

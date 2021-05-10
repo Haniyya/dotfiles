@@ -71,8 +71,3 @@ map <F3> :GitSessionLoad <cr>     " And load session with F3
 nmap <C-Space> $zf%
 
 "source $HOME/dotfiles/partials/ruby_test.vim
-
-nnoremap <leader>f :call RunCurrentSpecFile()<cr>
-nnoremap <leader>t :call RunNearestSpec()<cr>
-nnoremap <leader>s :call RunAllSpecs()<cr>
-nnoremap <leader>l :call RunLastSpec()<cr>

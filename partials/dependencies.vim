@@ -18,6 +18,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'mattn/webapi-vim'
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plugin 'janko-m/vim-test'
 
 " Code View and organization
 Plugin 'scrooloose/nerdtree'
@@ -51,7 +52,7 @@ Plugin 'tbastos/vim-lua'
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'leafOfTree/vim-vue-plugin'
 Plugin 'gorodinskiy/vim-coloresque'
-Plugin 'ElmCast/elm-vim'
+"Plugin 'ElmCast/elm-vim'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'ron-rs/ron.vim'
 Plugin 'bakpakin/fennel.vim'
@@ -62,4 +63,6 @@ Plugin 'autozimu/LanguageClient-neovim', {
     \ }
 Plugin 'neovim/nvim-lsp'
 Plugin 'Olical/conjure', { 'do': 'bin/compile'  }
+Plugin 'jparise/vim-graphql'
+Plugin 'bakpakin/janet.vim'
 call vundle#end()            " required

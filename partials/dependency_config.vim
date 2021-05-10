@@ -1,8 +1,12 @@
 set hidden
 
+let maplocalleader = ','
+let mapleader = ','
+
 autocmd BufRead,BufNewFile *.md setlocal conceallevel=0
 
-" Vue syntax stuff
+
+ "Vue syntax stuff
 let g:vim_vue_plugin_load_full_syntax = 1
 let g:vim_vue_plugin_use_typescript = 1
 
@@ -33,7 +37,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 
 " Autoformat elm
-let g:elm_format_autosave = 1
+let g:elm_format_autosave = 0
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -55,6 +59,14 @@ nmap <silent>K <Plug>(lcn-hover)
 nmap <silent>gd <Plug>(lcn-definition)
 nmap <silent> <F2> <Plug>(lcn-rename)
 
+
+let g:_VIM_PARINFER_DEFAULTS = {
+    \ 'globs':      ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.el', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.lfe', '*.fnl', '*.fennel', '*.carp', '*.janet'],
+    \ 'filetypes':  ['clojure', 'racket', 'lisp', 'scheme', 'lfe', 'fennel'],
+    \ 'mode':       "indent",
+    \ 'script_dir': resolve(expand("<sfile>:p:h:h"))
+    \ }
+
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
@@ -62,8 +74,14 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby': ['/usr/local/var/rbenv/shims/solargraph', 'stdio'],
     \ 'rust': ['rust-analyzer-mac'],
     \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'javascript': ['typescript-language-server', '--stdio'],
     \ 'vue': ['vls'],
+    \ 'elm': ['elm-language-server'],
     \ }
+
+let g:LanguageClient_rootMarkers = {
+  \ 'elm': ['elm.json'],
+  \ }
 
 " Ctrlp
 let g:ctrlp_extensions = ['line']
@@ -82,14 +100,24 @@ function! s:spring_available()
 endfunction
 
 if s:spring_available()
-  let g:rspec_command = "Dispatch bundle exec spring rspec {spec} --format progress"
-else
-  let g:rspec_command = "Dispatch bundle exec rspec {spec} --format progress"
+  let test#ruby#rspec#executable = "bundle exec spring rspec"
 endif
 
+" test stuff
+" make test commands execute using dispatch.vim
+let test#strategy = "dispatch"
+
+let test#ruby#rspec#options = '--format progress'
+
+nmap <leader>f :TestFile<CR>
+nmap <leader>t :TestNearest<CR>
+nmap <leader>s :TestSuite<CR>
+nmap <leader>l :TestLast<CR>
+nmap <leader>g :TestVisit<CR>
+
 " Ale fixers
-let g:ale_linters = {'rust': ['rls', 'cargo'], 'clojure': ['joker'], 'ruby': ['standardrb']}
-let g:ale_fixers = {'rust': ['cargo', 'rustfmt']}
+let g:ale_linters = {'rust': ['rls', 'cargo'], 'clojure': ['joker'], 'ruby': ['rubocop']}
+let g:ale_fixers = {'rust': ['cargo', 'rustfmt'], 'elm': ['elm-format']} 
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_ruby_standardrb_executable = 'bundle'
 
@@ -99,6 +127,4 @@ let g:conjure#mapping#def_word = "gc"
 autocmd BufEnter *.clj let maplocalleader = ','
 autocmd BufEnter *.cljs let maplocalleader = ','
 
-lua <<EOF
-  require'nvim_lsp'.solargraph.setup{}
-EOF
+let g:rustfmt_autosave = 1

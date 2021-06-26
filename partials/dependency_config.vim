@@ -16,14 +16,6 @@ let g:deoplete#enable_at_startup = 1
 " Airline Config
 let g:airline#extensions#tabline#enabled = 1
 
-"Rust settings
-"let g:racer_cmd = "racer"
-"let g:user_emmet_leader_key='<C-Z>'
-"let g:rustfmt_autosave = 1
-"let g:clang_user_options='|| exit 0'
-"let g:clang_complete_copen=1
-"let g:clang_hl_errors=1
-
 " Ruby settings
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
@@ -34,7 +26,6 @@ let g:rubycomplete_use_bundler = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
-
 
 " Autoformat elm
 let g:elm_format_autosave = 0
@@ -72,11 +63,12 @@ let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'ruby': ['/usr/local/var/rbenv/shims/solargraph', 'stdio'],
-    \ 'rust': ['rust-analyzer-mac'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rust-analyzer'],
     \ 'typescript': ['typescript-language-server', '--stdio'],
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ 'vue': ['vls'],
     \ 'elm': ['elm-language-server'],
+    \ 'lua': ['lua-language-server']
     \ }
 
 let g:LanguageClient_rootMarkers = {
@@ -102,6 +94,8 @@ endfunction
 if s:spring_available()
   let test#ruby#rspec#executable = "bundle exec spring rspec"
 endif
+
+let test#javascript#jest#options = "--no-interactive --no-status"
 
 " test stuff
 " make test commands execute using dispatch.vim

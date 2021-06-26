@@ -101,5 +101,3 @@ hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
 
 set termguicolors
-" In your init.vim AFTER loading plugins
-lua require'bufferline'.setup()

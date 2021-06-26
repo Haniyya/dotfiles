@@ -4,6 +4,7 @@ oh-my-zsh/
 vim/vim
 vim/plugin
 vim/bundle
+vim/plugged
 vim/eclim
 vim/.netrwhist
 chef/

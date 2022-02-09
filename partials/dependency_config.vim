@@ -73,13 +73,14 @@ let g:LanguageClient_serverCommands = {
 
 let g:LanguageClient_rootMarkers = {
   \ 'elm': ['elm.json'],
+  \ 'ruby': ['*.gemspec', 'Gemfile'],
   \ }
 
 " Ctrlp
 let g:ctrlp_extensions = ['line']
 
 " Fzf
-nnoremap <C-p> :Ag<Enter>
+nnoremap <C-p> :Rg<Enter>
 
 " Rspec runner
 
@@ -100,8 +101,8 @@ let test#javascript#jest#options = "--no-interactive --no-status"
 " test stuff
 " make test commands execute using dispatch.vim
 let test#strategy = "dispatch"
-
 let test#ruby#rspec#options = '--format progress'
+"autocmd BufEnter *.rb let test#project_root = finddir('lib/..', expand('%:p:h').';')
 
 nmap <leader>f :TestFile<CR>
 nmap <leader>t :TestNearest<CR>
@@ -117,8 +118,57 @@ let g:ale_ruby_standardrb_executable = 'bundle'
 
 
 let g:conjure#mapping#def_word = "gc"
+let g:conjure#filetype#scheme = "conjure.client.guile.socket"
+let g:conjure#client#guile#socket#pipename = ".guile-repl.socket"
 
 autocmd BufEnter *.clj let maplocalleader = ','
 autocmd BufEnter *.cljs let maplocalleader = ','
 
 let g:rustfmt_autosave = 1
+
+let g:aniseed#env = v:true
+
+let g:slime_target = "neovim"
+
+lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = "maintained",
+
+    -- Install languages synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+
+    -- List of parsers to ignore installing
+    ignore_install = { },
+
+    highlight = {
+      -- `false` will disable the whole extension
+      enable = true,
+
+      -- list of language that will be disabled
+      disable = {  },
+
+      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+      -- Using this option may slow down your editor, and you may see some duplicate highlights.
+      -- Instead of true it can also be a list of languages
+      additional_vim_regex_highlighting = false,
+    },
+  }
+EOF
+
+" TagBar
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_show_visibility = 1
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ],
+        \ 'ctagsbin':  'ripper-tags',
+        \ 'ctagsargs': ['-f', '-']
+\ }

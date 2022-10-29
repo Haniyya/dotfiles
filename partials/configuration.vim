@@ -36,7 +36,7 @@ endif
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-set t_Co=256 " 256 colors
+"set t_Co=256 " 256 colors
 
 let maplocalleader = ','
 let mapleader = ','

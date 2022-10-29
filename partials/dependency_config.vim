@@ -52,11 +52,18 @@ nmap <silent> <F2> <Plug>(lcn-rename)
 
 
 let g:_VIM_PARINFER_DEFAULTS = {
-    \ 'globs':      ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.el', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.lfe', '*.fnl', '*.fennel', '*.carp', '*.janet'],
+    \ 'globs':      ['*.clj', '*.cljs', '*.cljc', '*.edn', '*.el', '*.hl', '*.lisp', '*.rkt', '*.ss', '*.lfe', '*.fnl', '*.fennel', '*.carp', '*.janet', '*.scm'],
     \ 'filetypes':  ['clojure', 'racket', 'lisp', 'scheme', 'lfe', 'fennel'],
     \ 'mode':       "indent",
     \ 'script_dir': resolve(expand("<sfile>:p:h:h"))
     \ }
+let g:vim_parinfer_globs =
+      \ ['*.clj', '*.cljs',
+      \ '*.cljc', '*.edn',
+      \ '*.el', '*.hl', '*.lisp',
+      \ '*.rkt', '*.ss', '*.lfe',
+      \ '*.fnl', '*.fennel',
+      \ '*.carp', '*.janet', '*.scm']
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
@@ -65,9 +72,11 @@ let g:LanguageClient_serverCommands = {
     \ 'ruby': ['/usr/local/var/rbenv/shims/solargraph', 'stdio'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rust-analyzer'],
     \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'typescriptreact': ['typescript-language-server', '--stdio'],
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ 'vue': ['vls'],
     \ 'elm': ['elm-language-server'],
+    \ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
     \ 'lua': ['lua-language-server']
     \ }
 
@@ -111,15 +120,18 @@ nmap <leader>l :TestLast<CR>
 nmap <leader>g :TestVisit<CR>
 
 " Ale fixers
-let g:ale_linters = {'rust': ['rls', 'cargo'], 'clojure': ['joker'], 'ruby': ['rubocop']}
+let g:ale_linters = {'rust': ['rls', 'cargo'], 'clojure': ['clj-kondo'], 'ruby': ['rubocop']}
 let g:ale_fixers = {'rust': ['cargo', 'rustfmt'], 'elm': ['elm-format']} 
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_ruby_standardrb_executable = 'bundle'
 
 
 let g:conjure#mapping#def_word = "gc"
-let g:conjure#filetype#scheme = "conjure.client.guile.socket"
-let g:conjure#client#guile#socket#pipename = ".guile-repl.socket"
+"let g:conjure#filetype#scheme = "conjure.client.guile.socket"
+"let g:conjure#client#guile#socket#pipename = ".guile-repl.socket"
+let g:conjure#client#scheme#stdio#command = "petite"
+let g:conjure#client#scheme#stdio#prompt_pattern = "> $?"
+let g:conjure#extract#tree_sitter#enabled = v:true
 
 autocmd BufEnter *.clj let maplocalleader = ','
 autocmd BufEnter *.cljs let maplocalleader = ','
@@ -129,17 +141,21 @@ let g:rustfmt_autosave = 1
 let g:aniseed#env = v:true
 
 let g:slime_target = "neovim"
+let g:gitlab_token = $GITLAB_TOKEN
+
+let g:fugitive_gitlab_domains = ['https://gitlab.sumcumo.net']
+let g:gitlab_api_keys = {'gitlab.sumcumo.net': g:gitlab_token}
 
 lua <<EOF
   require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = "maintained",
+    ensure_installed = "all",
 
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
     -- List of parsers to ignore installing
-    ignore_install = { },
+    ignore_install = {"phpdoc"},
 
     highlight = {
       -- `false` will disable the whole extension

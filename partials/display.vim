@@ -86,7 +86,7 @@ set statusline+=%#warningmsg#
 
 " This weeks favorite colorscheme
 " colorscheme railscasts
-colorscheme seoul256
+colorscheme nord
 autocmd FileType * if &diff | colorscheme neverland2-darker | endif
 
 " Show textwidth
@@ -100,4 +100,4 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
 
-set termguicolors
+"set termguicolors

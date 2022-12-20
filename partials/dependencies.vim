@@ -64,4 +64,6 @@ Plug 'tbastos/vim-lua'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tjvr/vim-nearley'
+Plug 'niklasl/vim-rdf'
 call plug#end()            " required
